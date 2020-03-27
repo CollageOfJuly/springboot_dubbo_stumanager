@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <base th:href="|${#request.getContextPath()}/|">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+    <script type="text/javascript">
+        function checkFrom() {
+            var obj = document.getElementsByName("sname")[0];
+            var sname = obj.value;
+            if (sname=="" || sname==null){
+                alert("请输入学生姓名")
+                var val = $("#cid").val();
+                alert(val)
+                return false;
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <h1>添加学生信息</h1>
+    <form action="/stu/add" method="post" onsubmit="return checkFrom()" >
+        姓名：<input type="text" id="sname" name="sname" placeholder="请输入学生姓名">
+        年龄：<input type="text" name="age" >
+        班级名称：<select name="cid" id="cid">
+                    <option value="1">一年一班</option>
+                    <option value="2">一年二班</option>
+                </select>
+        <input type="submit" value="提交" >
+    </form>
+</body>
+</html>
